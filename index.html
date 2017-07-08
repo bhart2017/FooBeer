@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Foobeer!</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+<body>
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-padding w3-card-2" style="letter-spacing:4px;">
+    <a href="#home" class="w3-bar-item w3-button">FooBeer</a>
+    <form class="form-wrapper cf">
+        <input type="text" placeholder="You're pair...?" required>
+        <button type="submit">Search</button>
+    </form> 
+    <!-- Right-sided navbar links. Hide them on small screens -->
+    <div class="w3-right w3-hide-small">
+      <a href="#about" class="w3-bar-item w3-button">About FooBeer!</a>
+      <a href="#menu" class="w3-bar-item w3-button">Developers</a>
+      <a href="#contact" class="w3-bar-item w3-button">Contact</a>
+    </div>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="w3-display-container w3-content w3-wide" style="max-width:1600px;min-width:500px" id="home">
+  <img class="w3-image" src="assets/images/konabrew_nachos2.png" alt="Delicious food" width="1600" height="800">
+  <div class="w3-display-bottomleft w3-padding-large w3-opacity">
+    <h1 class="w3-xxlarge"></h1>
+  </div>
+</header>
+
+<!-- Page content -->
+<div class="w3-content" style="max-width:1100px">
+
+  <!-- About Section -->
+  <div class="w3-row w3-padding-64" id="about">
+    <div class="w3-col m6 w3-padding-large w3-hide-small">
+     <img src="assets/images/beerwithfood.png" class="w3-round w3-image w3-opacity-min" alt="Table Setting" width="600" height="750">
+    </div>
+
+    <div class="w3-col m6 w3-padding-large">
+      <h1 class="w3-center">About FooBeer!</h1><br>
+      <h5 class="w3-center">Tradition since 2017</h5>
+      <p class="w3-large">FooBeer! was created in 2017 by Ben, Keisha, and Jordan from GA Tech to pair great food with even greater beer. We set out on a journey to make sure the people knew what would pair well so our meals are more enjoyable.</p>
+      <p class="w3-large w3-text-grey w3-hide-medium">Our mission is simple here at FooBeer! We provide great meals you can enjoy at home, when out, or if you're just curious; and we pair them with beer's that compliment your selection. Trust the food junkies from college, you'll definitely thank us later!</p>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <!-- Menu Section -->
+  <div class="w3-row w3-padding-64" id="menu">
+    <div class="w3-col l6 w3-padding-large">
+      <h1 class="w3-center">Our Curators</h1><br>
+      <h4>Ben Hart</h4>
+      <p class="w3-text-grey">Buffalo Burger with Sam Adams Summer Ale</p><br>
+      <img src="assets/images/benbeer.png">
+    
+      <h4>Keisha Leger</h4>
+      <p class="w3-text-grey">Spaghetti with Garlic Parmesano and basil paired with Stella Artois</p><br>
+      <img src="assets/images/keishabeer.png">
+    
+      <h4>Jordan Hires</h4>
+      <p class="w3-text-grey">OktoberFest Beef Stew with Samuel Adam's Seasonal</p><br>
+    </div>
+    <img src="assets/images/OktoberFest.png">
+    
+    <div class="w3-col l6 w3-padding-large">
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- Contact Section -->
+  <div class="w3-container w3-padding-64" id="contact">
+    <h1>Contact</h1><br>
+    <p></p>
+    <p class="w3-text-blue-grey w3-large"><b>GA Tech Savannah, GA </b></p>
+    <p></p>
+    <form action="/action_page.php" target="_blank">
+      <p><input class="w3-input w3-padding-16" type="text" placeholder="Name" required name="Name"></p>
+      <p><input class="w3-input w3-padding-16" type="text" placeholder="Message" required name="Message"></p>
+      <p><button class="w3-button w3-light-grey w3-section" type="submit">SEND MESSAGE</button></p>
+    </form>
+  </div>
+<!-- End page content -->
+</div>
+
+</body>
+</html>
