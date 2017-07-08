@@ -21,24 +21,33 @@ function displayRecipes() {
 *@return
 */    	
     	for (var i=0; i<recipes.length; i++){
+            var title = recipes[i].title
+            var titlehtml = $("<h3>").text(title)
+            $(".recipes").append(titlehtml)
 
-    		var title = recipes[i].title
-    		var titlehtml = $("<h3>").text(title)
-    		$(".recipes").append(titlehtml)
+            var image = recipes[i].image_url
+            var imagehtml = $("<img>").attr("src", image)
+            $(".recipes").append(imagehtml)
 
-    		var image = recipes[i].image_url
-    		var imagehtml = $("<img>").attr("src", image)
-    		$(".recipes").append(imagehtml)
-
+    		
     		var recipeId = recipes[i].recipe_id
+            
+            //empty div with recipe ID to be used a container to store recipes from get recipe api
+            var recipeContainer = $("<div>").attr("id", recipeId)
+            $(".recipes").append(recipeContainer)
+
+
 			var getRecipeUrl = "http://food2fork.com/api/get?key=dd239160abdf30e4ce96d29d2dab4aaa&rId=" + recipeId;
 
 			$.ajax({
 		    	url: getRecipeUrl,
 		    	method: "GET"
     		}).done(function(response) {
-    			var ingredients = JSON.parse (response).recipe.ingredients;
 
+
+                var recipeId = JSON.parse (response).recipe.recipe_id;
+    			var ingredients = JSON.parse (response).recipe.ingredients;
+                    console.log
 
     			var ulHtml = $("<ul>")
 				for (var i=0; i<ingredients.length; i++){
@@ -46,7 +55,7 @@ function displayRecipes() {
 					ulHtml.append(liHtml)
 
     			}
-    			$(".recipes").append(ulHtml)		
+    			$("#" + recipeId).append(ulHtml)		
     		})
 
 
