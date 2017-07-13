@@ -5,9 +5,13 @@ if (typeof(Storage) !== "undefined" && localStorage.getItem("userInput") !== und
 else{
      window.location.href = "../../index.html"
 }
+
+
+
 function displayRecipes() {
+    var food2ForkApiKey = "2144f04907f7ca547884e45cf1553a26";
     var userInput = localStorage.getItem("userInput")    
-    var searchRecipeURL = 'https://food2fork.com/api/search?key=dd239160abdf30e4ce96d29d2dab4aaa&q='+ userInput;
+    var searchRecipeURL = 'https://food2fork.com/api/search?key=' + food2ForkApiKey + '&q=' + userInput;
     
     $.ajax({
     	url: searchRecipeURL,
@@ -15,7 +19,7 @@ function displayRecipes() {
     }).done(function(response) {
     	var data = JSON.parse (response);
     	var recipes = data.recipes
-/*create loops that will pull the title, picture and recipe and post to page 
+/*create loops that will pull the title, picture, recipe, link to instructions and post to page 
 *
 *@param
 *@return
@@ -37,7 +41,7 @@ function displayRecipes() {
             $(".recipes").append(recipeContainer)
 
 
-			var getRecipeUrl = "http://food2fork.com/api/get?key=dd239160abdf30e4ce96d29d2dab4aaa&rId=" + recipeId;
+			var getRecipeUrl = 'http://food2fork.com/api/get?key=' + food2ForkApiKey + '&rId=' + recipeId;
 
 			$.ajax({
 		    	url: getRecipeUrl,
@@ -55,12 +59,26 @@ function displayRecipes() {
 					ulHtml.append(liHtml)
 
     			}
-    			$("#" + recipeId).append(ulHtml)		
-    		})
+    			$("#" + recipeId).append(ulHtml)
+
+                //source url is the location of the recipe instructions in <span itemprop="recipeInstructions">
+                var sourceUrl = JSON.parse (response).recipe.source_url;
+                var getSourceUrl = 'http://food2fork.com/api/get?key=' + food2ForkApiKey + '&rId=' + sourceUrl;
+                
+                var recipeInstructionLink = $("<a>").attr("href", sourceUrl).text("Click here for Recipe Instructions")
+                $("#" + recipeId).append(recipeInstructionLink)
+    	
+                //var beerUrl = JSON.parse (response).;
+                var getBeerUrl = "http://api.brewerydb.com/v2/menu/styles?key=bfc8275fcb6730dbec9204c6139055a1/beers";
+                
+                $.ajax({
+                    url: getBeerUrl,
+                    method: "GET"
+                }).done(function(response) {
+                    console.log(getBeerUrl)
+                })
+                    
+        })
 
 
-
-
-
-    	}
-})};
+}})}
